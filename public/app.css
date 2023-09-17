@@ -34,6 +34,7 @@ div#nav-bar {
 img#logo {
     margin-top: 50px;
     animation: logo-rotation 8s linear infinite;
+    max-width: 90vw;
 }
 
 @keyframes logo-rotation {
@@ -135,6 +136,7 @@ button.button {
     background-color: white;
     border: 2px solid white;
     margin: 2.5px;
+    cursor: pointer;
 }
 
 .label {

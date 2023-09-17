@@ -22,9 +22,9 @@ Route::get('/', function () {
 
 Route::get('item/{item}', function ($slug) {
     //  Passendes Produkt zu der Variable $slug aus der Datenbank finden und an die View Item übergebn
-    
+
     $item = Product::where('name', '=', $slug)->get()->toArray()[0];
-    
+
     return view('item', [
         'item' => $item
     ]);
@@ -37,4 +37,8 @@ Route::get('shopping-cart', function () {
 
 Route::get('legal', function () {
     return view('legal');
+});
+
+Route::get('admin', function () {
+    return view('admin');
 });

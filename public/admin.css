@@ -1,0 +1,23 @@
+
+div#container {
+    margin: 15px;
+    width: 100%;
+    color: #000000 !important;
+    background-color: white;
+}
+
+a {
+    color: blue !important;
+    text-decoration: underline !important;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+td {
+    border: 1px solid black;
+    padding: 5px;
+}

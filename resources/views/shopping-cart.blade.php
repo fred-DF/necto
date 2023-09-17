@@ -42,6 +42,7 @@
                     // Produkt Bild
                     const img = document.createElement("img");
                     img.src = "../product_pictures/" + product.picUrl;
+                    img.draggable = false;
                     img.classList.add("product_pic_small");
                     // 1. Spalte
                     const column_1 = document.createElement("div");
