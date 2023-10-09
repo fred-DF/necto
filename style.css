@@ -1,0 +1,92 @@
+
+body {
+    overflow-x: hidden;
+    width: 100vw;
+    color: white;
+    font-family: sans-serif;
+    padding: 25px 0;
+    background: rgb(36,34,71);
+    background: linear-gradient(54deg, rgba(36,34,71,1) 0%, rgba(38,38,80,1) 76%, rgba(3,74,89,1) 100%);
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+div#item_list {
+    z-index: 2;
+    max-width: 650px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    overflow-y: scroll;
+}
+
+div#bg {
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+}
+
+div.item {
+    width: calc(50% - 60px);
+    background-color: white;
+    border-radius: 5px;
+    padding: 25px;
+    color: black;
+    z-index: 2;
+}
+
+div.item > img {
+    width: 100%;
+
+}
+
+div.item > h2 {
+    margin: 10px 0;
+}
+
+div.item > div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-content: baseline;
+}
+
+div.item > div > p {
+    margin: 5px;
+}
+
+div.item > div > button {
+    background-color: #7caaff;
+    color: white;
+    width: 50%;
+    border-radius: 2px;
+    border: none;
+}
+
+div#bg > img {
+    z-index: -999;
+    width: 750px;
+    position: absolute;
+    left: -750px;
+    top: 0%;
+    transform: translateX(-100%);
+    animation-name: cloud_movement;
+    animation-timing-function: linear;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes cloud_movement {
+    0% {
+        left: -750px;
+    }
+
+    100% {
+        left: calc(100% + 750px);
+    }
+}
+

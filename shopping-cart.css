@@ -1,0 +1,83 @@
+
+body {
+    background-color: white !important;
+    color: black;
+    overflow-x: hidden;
+    width: 100vw;
+    font-family: sans-serif;
+    padding: 25px 0;
+}
+
+#shopping-cart-page {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+#shopping-cart-page > div {
+    width: 20%;
+}
+
+.shopping-cart-item-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e7e7e7;
+    border-radius: 3px;
+    margin: 5px 0;
+    flex-wrap: wrap;
+}
+
+.shopping-cart-item-div > img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 3px 0 0 3px;
+}
+
+.shopping-cart-item-div > div {
+    margin: 0 20px;
+}
+
+p.product-name {
+    color: black !important;
+    font-weight: normal !important;
+}
+
+p.product-name, p.product-price {
+    margin: 0;
+    color: rgb(128, 128, 128);
+    font-weight: lighter;
+}
+
+button.large {
+    width: 100%;
+    padding: 15px 0;
+    background-color: #7caaff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+/* Ladespinner (Fremder Code) */
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #8d8d8d;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
