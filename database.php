@@ -41,7 +41,7 @@ class database {
             foreach ($query['conditions'] as $condition) {
                 $zaehler++;
 
-                $sql_command = $sql_command."`".$condition['0']."`='".$condition[1]."' ";
+                $sql_command = $sql_command."`".$condition[0]."`='".$condition[1]."' ";
                 if($zaehler != count($query['conditions'])) {
                     $sql_command = $sql_command."&& ";
                 }
@@ -66,5 +66,17 @@ class database {
         $stmt = $pdo->prepare($sql_command);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function executeQuery($query) {
+        try {
+            $conn = self::connect(); // Annahme, dass Sie eine solche Funktion haben
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("MySQL-Error: " . $e->getMessage());
+            return false;
+        }
+        return true;
     }
 }

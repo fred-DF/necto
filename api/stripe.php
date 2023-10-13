@@ -1,6 +1,7 @@
 <?php
 
 require_once '../bootstrap.php';
+require_once 'order.php';
 
 \Stripe\Stripe::setApiKey($_ENV['STRIPE_API_KEY']);
 header('Content-Type: application/json');
@@ -17,9 +18,50 @@ class Stripe {
             'shipping_address_collection' => [
                 'allowed_countries' => ['DE', 'US', 'CA', 'GB', 'BG'],
             ],
+            'shipping_options' => [
+                [
+                    'shipping_rate_data' => [
+                        'type' => 'fixed_amount',
+                        'fixed_amount' => [
+                            'amount' => 0,
+                            'currency' => 'bgn',
+                        ],
+                        'display_name' => 'Free shipping',
+                        'delivery_estimate' => [
+                            'minimum' => [
+                                'unit' => 'business_day',
+                                'value' => 5,
+                            ],
+                            'maximum' => [
+                                'unit' => 'business_day',
+                                'value' => 7,
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'shipping_rate_data' => [
+                        'type' => 'fixed_amount',
+                        'fixed_amount' => [
+                            'amount' => 1500,
+                            'currency' => 'bgn',
+                        ],
+                        'display_name' => 'Next day',
+                        'delivery_estimate' => [
+                            'minimum' => [
+                                'unit' => 'business_day',
+                                'value' => 1,
+                            ],
+                            'maximum' => [
+                                'unit' => 'business_day',
+                                'value' => 1,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ]);
 
-        header("HTTP/1.1 303 See Other");
-        header("Location: " . $checkout_session->url);
+        return ['session_id' => $checkout_session->id, 'redirect_url' => $checkout_session->url];
     }
 }
