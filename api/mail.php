@@ -96,4 +96,3 @@ Phone: +015253036123
     }
 }
 
-Mail::orderConfirmation(['email' => 'frederik@genanntnoelke.de', 'name' => 'Frederik Nölke', 'orderId' => 'DE982340', 'orderDate' => '13.10.20203', 'totalAmount' => "BGR 150", 'invoiceLink' => 'example.com', 'shipping_address' => 'Sperlichstr. 62, 48151 Münster', 'billing_address' => 'Sperlichstr. 62, 4851 Münster']);

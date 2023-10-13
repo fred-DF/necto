@@ -2,6 +2,7 @@
 
 require_once '../bootstrap.php';
 require_once 'stripe.php';
+require_once 'mail.php';
 
 class Order
 {
@@ -64,6 +65,8 @@ class Order
         ";
         database::executeQuery($sqlQuery);
         header("HTTP/1.1 200");
+        Mail::orderConfirmation(['email' => 'frederik@genanntnoelke.de', 'name' => 'Frederik Nölke', 'orderId' => 'DE982340', 'orderDate' => '13.10.20203', 'totalAmount' => "BGR 150", 'invoiceLink' => 'example.com', 'shipping_address' => 'Sperlichstr. 62, 48151 Münster', 'billing_address' => 'Sperlichstr. 62, 4851 Münster']);
+
     }
 }
 
