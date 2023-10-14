@@ -49,7 +49,7 @@ class Order
             UPDATE `orders` SET 
             `order_id`='$orderID',
             `state`='payed',
-            `payment_status`='".$paymentData->data->object->status."',
+            `payment_status`='".$paymentData->data->object->payment_status."',
             `costumer_name`='".$name."',
             `costumer_email`='".$mail."',
             `costumer_tel`='',
@@ -65,7 +65,7 @@ class Order
         ";
         database::executeQuery($sqlQuery);
         header("HTTP/1.1 200");
-        Mail::orderConfirmation(['email' => 'frederik@genanntnoelke.de', 'name' => 'Frederik Nölke', 'orderId' => 'DE982340', 'orderDate' => '13.10.20203', 'totalAmount' => "BGR 150", 'invoiceLink' => 'example.com', 'shipping_address' => 'Sperlichstr. 62, 48151 Münster', 'billing_address' => 'Sperlichstr. 62, 4851 Münster']);
+        Mail::orderConfirmation(['email' => $mail, 'name' => $name, 'orderId' => $orderID, 'orderDate' => $paymentData->data->object->created, 'totalAmount' => $amount." ".$currency, 'invoiceLink' => 'example.com', 'shipping_address' => $address_line1.", ".$address_postal_code." ".$address_city, 'billing_address' => $address_line1]);
 
     }
 }
