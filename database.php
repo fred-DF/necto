@@ -73,10 +73,11 @@ class database {
             $conn = self::connect(); // Annahme, dass Sie eine solche Funktion haben
             $stmt = $conn->prepare($query);
             $stmt->execute();
+            $result = $stmt->fetchColumn();
         } catch (PDOException $e) {
             error_log("MySQL-Error: " . $e->getMessage());
             return false;
         }
-        return true;
+        return $result;
     }
 }

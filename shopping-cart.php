@@ -62,7 +62,8 @@
         const processShoppingCartElement = async (element) => {
             try {
                 const data = await getproductInfo(element.id);
-                stripeShoppingCart.push({ price: data.stripe_pice_id, quantity: 1 });
+                // ['stripe_price_id'=>'price_1NsJqTB0uesfVsSs85bB0UJq','id'=>1,'color'=>'red','size'=>'M','name'=>'Mixed Feelings']
+                stripeShoppingCart.push({ stripe_price_id: data.stripe_pice_id, id: data.ID, color: element.color, size: element.size, name: data.product_name });
                 createCartElement(data);
             } catch (error) {
                 console.error('Error:', error);

@@ -1,13 +1,11 @@
 Dear <b>{{name}}</b>,
 
 Thank you for shopping with Necto! We are delighted to confirm that your order <b>#{{order_id}}</b> has been received and is now <b>being processed</b>.
-<h2>Order Summary</h2><b>Order Number: #{{order_id}}</b>
-<b>Order Date: {{order_date}}</b>
-<h3>Purchased Items:</h3>
-<hr><b>Mixed Feelings</b>
-Brown | S | 25 BGR
-<hr><hr>
-Total Amount Paid: <b>{{amount_paid}}</b>
+<h2>Order Summary</h2>
+Order Number: <b>#{{order_id}}</b>
+Order Date: <b>{{order_date}}</b>
+
+Total Amount Paid: <b><span style="text-decoration: double">{{amount_paid}}</span></b>
 
 You should already get an invoice form our payment partner Stripe.
 Shipping Address: <b>{{shipping_address}}</b>

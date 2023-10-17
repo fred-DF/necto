@@ -1,0 +1,80 @@
+
+. {
+
+
+}
+
+
+body {
+    background-color: #fcfcfc;
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    color: #343434;
+}
+
+h4 {
+    margin: 5px 0 10px 0;
+}
+
+span.marked {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: greenyellow;
+    font-size: 12px;
+}
+
+div.order-wrapper {
+    display: flex;
+    gap: 15px;
+    padding: 0px calc(100% - 300px / 2);
+    align-content: center;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+div.order-wrapper > div {
+    display: flex;
+    flex-flow: column;
+    scroll-snap-align: center;
+    gap: -0.5px;
+}
+
+div.order-wrapper > div > div:first-child {
+    border: 2px solid lightgray;
+    border-bottom-style: dashed;
+    width: 300px;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+div.order-wrapper > div > div:last-child {
+    border: 2px solid lightgray;
+    border-top-style: none;
+    width: 300px;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+div.space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.order-wrapper > div > div:first-child > div > div > p {
+    margin: 2px 0;
+    font-size: 12px;
+}
+
+div.order-wrapper > div > div:first-child > div > div > a {
+    margin: 2px 0;
+    font-size: 12px;
+    color: dodgerblue;
+}
+
+.quick-links {
+    display: flex;
+    flex-flow: column;
+    text-align: right;
+}

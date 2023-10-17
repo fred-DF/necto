@@ -1,0 +1,10 @@
+{
+  "name": "Necto: dispatch, costumer support and more",
+  "short_name": "Necto",
+  "theme_color": "#000000",
+  "background_color": "#fcfcfc",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/"
+}

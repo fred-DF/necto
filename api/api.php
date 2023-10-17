@@ -21,12 +21,13 @@ if(isset($_GET['route'])) {
 
         case 'checkout':
             include 'order.php';
-            $data = Order::prepareOrder([
-                ['stripe_price_id'=>'price_1NsJqTB0uesfVsSs85bB0UJq','id'=>1,'color'=>'red','size'=>'M','name'=>'Mixed Feelings'],
-                ['stripe_price_id'=>'price_1NsJqTB0uesfVsSs85bB0UJq','id'=>1,'color'=>'red','size'=>'M','name'=>'Mixed Feelings']
-            ]);
+//            $data = Order::prepareOrder([
+//                ['stripe_price_id'=>'price_1NsJqTB0uesfVsSs85bB0UJq','id'=>1,'color'=>'red','size'=>'M','name'=>'Mixed Feelings'],
+//                ['stripe_price_id'=>'price_1NsJqTB0uesfVsSs85bB0UJq','id'=>1,'color'=>'red','size'=>'M','name'=>'Mixed Feelings']
+//            ]);
+            $data = Order::prepareOrder(json_decode($_GET['shopping-cart'], true));
             $data = json_decode($data);
-            header("HTTP/1.1 403");
+            header("HTTP/1.1 301");
             header("Location: ".$data->redirect_url);
             break;
 
