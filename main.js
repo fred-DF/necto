@@ -19,7 +19,9 @@ function loadClouds () {
 
 window.loadClouds = loadClouds;
 
-if(document.getElementById('shoppingCartLink') !== undefined) {
+loadClouds();
+
+if(document.getElementById('shoppingCartLink') !== null) {
     let shoppingCart = JSON.parse(localStorage.getItem("shopping-cart"));
     document.getElementById('shoppingCartLink').innerText = "Shopping Cart (" + shoppingCart.length + ")";
 }

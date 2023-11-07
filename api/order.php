@@ -43,7 +43,7 @@ class Order
         $shipping_cost = $paymentData->data->object->shipping_cost->amount_total / 100;
         $shipping_rate = $paymentData->data->object->shipping_cost->shipping_rate;
 
-        $orderID = $address_country.uniqid();
+        $orderID = $address_country.strtoupper(uniqid());
 
         $sqlQuery = "
             UPDATE `orders` SET 

@@ -1,7 +1,7 @@
 <?php
 
     require_once 'bootstrap.php';
-    $items = database::select('products', ['conditions' => [["product_price", "35"]]]);
+    $items = database::select('products');
 
 ?>
 <!doctype html>
@@ -27,7 +27,17 @@
         foreach ($items as $item) {
                 ?>
         <div class="item">
-            <img src="<?php echo $item['product_pic_url'] ?>" alt="">
+            <p class="sold_out_banner">new drop</p>
+            <div class="img_container">
+                <img src="<?php echo $item['product_pic_url'] ?>" alt="">
+                <div class="text_container">
+                    <div class="color_wrapper">
+                        <div class="color_preview" style="background-color: #ff2929"></div>
+                        <div class="color_preview" style="background-color: #e3e3e3"></div>
+                        <div class="color_preview" style="background-color: #000000"></div>
+                    </div>
+                </div>
+            </div>
             <h2><?php echo $item['product_name'] ?></h2>
             <div>
                 <p><?php echo $item['product_price'] ?> BGR</p>

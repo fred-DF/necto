@@ -14,7 +14,8 @@ class database {
 
             return $conn;
         } catch(PDOException $e) {
-            if($_ENV['debug']) {
+            if($_ENV['DEBUG']) {
+                error_log("Database Connection Error: " . $e->getMessage());
                 return "Verbindung fehlgeschlagen: " . $e->getMessage();
             } else {
                 return false;
@@ -22,7 +23,7 @@ class database {
         }
     }
 
-    public static function select ($table, $query): array
+    public static function select ($table, $query = []): array
     {
 
         $sql_command = "SELECT ";
@@ -30,7 +31,7 @@ class database {
         if(isset($query['columns'])) {
             $sql_command = $sql_command."'".$query['columns']."' ";
         } else {
-            $sql_command = $sql_command."* ";
+            $sql_command .= "* ";
         }
 
         $sql_command = $sql_command."FROM ".$table." ";

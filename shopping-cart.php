@@ -12,7 +12,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 style="text-align: center">Shopping Cart</h1>
+<?php
+include "navbar.php";
+?>
     <div id="shopping-cart-page">
         <div style="display: flex; justify-content: center">
             <span class="loader" id="loader"></span>
@@ -52,10 +54,14 @@
             const price = document.createElement('p');
             price.innerText = data.product_price + " BGR";
             price.classList.add("product-price");
+            const bg_img = document.createElement('img');
+            bg_img.src = data.product_pic_url;
+            bg_img.classList.add("bg_img");
             div.appendChild(img);
             p_div.appendChild(name);
             p_div.appendChild(price);
             div.appendChild(p_div);
+            div.appendChild(bg_img);
             list.appendChild(div);
         };
 
@@ -80,7 +86,7 @@
             document.getElementById('list').style.display = 'block';
             document.getElementById('stripePaymentButton').disabled = false;
             document.getElementById('stripePaymentButton').addEventListener('click', () => {
-                window.location = '<?php echo $_ENV['API_PATH']; ?>?route=create-checkout-session&shopping-cart=' + JSON.stringify(stripeShoppingCart);
+                window.location = '<?php echo $_ENV['API_PATH']; ?>?route=checkout&shopping-cart=' + JSON.stringify(stripeShoppingCart);
             });
         }).catch((error) => {
             console.error('One of the requests failed:', error);

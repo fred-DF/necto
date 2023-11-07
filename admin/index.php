@@ -85,6 +85,11 @@
             <span>To view all the important data around finances, go to the Stripe Dashboard.</span><br>
             <button id="go-to-stripe">go to Stripe</button>
         </div>
+        <div>
+            <h4>products</h4>
+            <span>Set stock amount and edit the offers</span><br>
+            <button>edit products</button>
+        </div>
     </div>
     <script>
         document.getElementById('go-to-stripe').addEventListener('click', () => {
@@ -104,5 +109,8 @@
             document.getElementById('push-permit').dataset.shown = false;
         });
     </script>
+    <!-- Fügen Sie die folgenden Skripte in Ihren HTML-Code ein -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging.js"></script>
 </body>
 </html>
