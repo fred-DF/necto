@@ -12,6 +12,7 @@ class database {
             // Fehlermodus auf Ausnahmen setzen
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+
             return $conn;
         } catch(PDOException $e) {
             if($_ENV['DEBUG']) {
@@ -54,7 +55,7 @@ class database {
         }
 
         if(isset($query['order'])) {
-            $sql_command = $sql_command." ORDER BY '".$query['order']['column']."' ".$query['order']['direction']." ";
+            $sql_command = $sql_command." ORDER BY ".$query['order']['column']." ".$query['order']['direction']." ";
         }
 
         if(isset($query['limit'])) {

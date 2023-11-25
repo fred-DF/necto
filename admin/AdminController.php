@@ -13,4 +13,16 @@ Class AdminController {
     public static function getOrdersToDispatch () {
         return database::select('orders', [ 'conditions'=> [['shipped', 0]]]);
     }
+
+    public static function getProducts () {
+        return database::select('products', []);
+    }
+
+    public static function getProductData ($product_id) {
+        return database::select('products', [ 'conditions' => [['ID', $product_id]]]);
+    }
+
+    public static function getProductVariants ($product_id) {
+        return database::select('product_variants', ['conditions' => [['product_ID', $product_id]]]);
+    }
 }

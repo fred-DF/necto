@@ -5,7 +5,7 @@ function loadClouds () {
     const countClouds = Math.round(screenWidth / 300);
 
     for(let i = countClouds; i >= 0; i--) {
-        const cloud = document.createElement("img");
+        const cloud = document.createElement("product_images");
         cloud.src = "cloud.png";
         cloud.draggable = false;
         cloud.style.transform = "translateY(" + Math.floor(Math.random() * window.innerHeight) + "px)";

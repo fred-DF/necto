@@ -6,8 +6,29 @@ require_once 'mail.php';
 
 class Order
 {
+
+    private static function checkAvailability ($id, $color, $size) {
+        $res = database::select('product_variants', ['conditions' => [['product_ID', $id],['product_color', $color],['product_size', $size]]]);
+        if(!empty($res)) {
+            if(count($res) === 1) {
+                if($res[0]['stock'] > 0) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public static function prepareOrder ($shopping_cart) {
         # $shopping_cart = [['stripe_price_id','id','color','size','name'],...]
+        foreach ($shopping_cart as $product) {
+            if(!self::checkAvailability($product['id'],$product['color'], $product['size'])) {
+                return json_encode(['error' => true]);
+            }
+        }
         $stripe_products = [];
         foreach ($shopping_cart as $product) {
             $stripe_products[] = ['price' => $product['stripe_price_id'], 'quantity' => 1];

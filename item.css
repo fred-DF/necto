@@ -77,3 +77,20 @@ a.nav {
     color: white;
     height: 40px;
 }
+
+@media only screen and (max-width: 800px) {
+    #item_page {
+        flex-direction: column;
+        width: calc(100vw - 15px);
+    }
+
+    #item_page > img {
+        max-height: none;
+        width: 100%;
+    }
+
+    #item_page > div {
+        min-width: unset;
+    }
+
+}

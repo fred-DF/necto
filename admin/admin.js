@@ -1,4 +1,12 @@
-// TODO: Ersetzen Sie diese Konfigurationsdetails durch Ihre
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-messaging.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyB1YqjsNt6Mv4ovqRTIUPIXancEUfZozeg",
     authDomain: "necto-dfceb.firebaseapp.com",
@@ -9,23 +17,7 @@ const firebaseConfig = {
     measurementId: "G-X5XERRSSVJ"
 };
 
-// Initialisieren Sie Firebase
-const app = firebase.initializeApp(firebaseConfig);
-// Retrieve Firebase Messaging object.
-const messaging = firebase.messaging();
-
-// Anfordern der Berechtigung vom Benutzer, um Push-Benachrichtigungen zu empfangen.
-messaging.requestPermission().then(function() {
-    console.log('Notification permission granted.');
-    return messaging.getToken(); // Get the token.
-}).then(function(token) {
-    console.log(token); // Token ausgeben oder an Ihren Server senden
-}).catch(function(err) {
-    console.log('Unable to get permission to notify.', err);
-});
-
-// Vordergrund-Nachrichtenempfang
-messaging.onMessage(function(payload) {
-    console.log('Message received. ', payload);
-    // Verarbeiten Sie die empfangene Nachricht
-});
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const messaging = getMessaging(app);

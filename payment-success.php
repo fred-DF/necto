@@ -41,5 +41,8 @@
             background-color: white;
         }
     </style>
+    <script>
+        localStorage.setItem('shopping-cart', '');
+    </script>
 </body>
 </html>

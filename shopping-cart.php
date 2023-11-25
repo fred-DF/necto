@@ -14,13 +14,33 @@
 <body>
 <?php
 include "navbar.php";
+
+
+
+
+
+
+
+
+
 ?>
     <div id="shopping-cart-page">
-        <div style="display: flex; justify-content: center">
+        <div style="display: flex; justify-content: center; flex-direction: column">
+            <?php
+
+            if(isset($_GET['productSoldOut'])) {
+                ?>
+                <div style="padding: 30px 35px;  width: fit-content; background-color: rgba(255,0,0,0.34); border: 2px solid #ff0000;">
+                    <h2>OOP'S, one of your items isn't on stock any longer</h2>
+                    <p>It seems like on of your selected products is gone sold out since you put it in your shopping cart. We're sorry that we can't give you detailed information's.</p>
+                </div>
+                <?php
+            }
+            ?>
             <span class="loader" id="loader"></span>
             <div id="list" style="display: none"></div>
         </div>
-        <div>
+                <div>
             <h2>Pay now</h2>
             <p>Pay directly with our payment partner Stripe.</p>
             <button class="large" id="stripePaymentButton">Pay</button>
@@ -42,11 +62,13 @@ include "navbar.php";
             }
         };
 
-        const createCartElement = (data) => {
+        const createCartElement = (data, color, size) => {
+            console.log(data)
             const div = document.createElement('div');
             const p_div = document.createElement('div');
             div.classList.add("shopping-cart-item-div");
             const img = document.createElement('img');
+            const divl = document.createElement('div');
             img.src = data.product_pic_url;
             const name = document.createElement('p');
             name.innerText = data.product_name;
@@ -54,12 +76,25 @@ include "navbar.php";
             const price = document.createElement('p');
             price.innerText = data.product_price + " BGR";
             price.classList.add("product-price");
+            const divr = document.createElement('div');
+            divr.classList.add("div_r");
+            const del = document.createElement('p');
+            del.classList.add("product-delete");
+            del.innerText = "Delete";
+            const sizecolor = document.createElement('p');
+            sizecolor.classList.add("size-delete");
+            sizecolor.innerText = color + ", " + size;
             const bg_img = document.createElement('img');
             bg_img.src = data.product_pic_url;
             bg_img.classList.add("bg_img");
             div.appendChild(img);
-            p_div.appendChild(name);
-            p_div.appendChild(price);
+            divl.appendChild(name);
+            divl.appendChild(price);
+            divr.appendChild(del);
+            divr.appendChild(del);
+            divr.appendChild(sizecolor);
+            p_div.appendChild(divl);
+            p_div.appendChild(divr);
             div.appendChild(p_div);
             div.appendChild(bg_img);
             list.appendChild(div);
@@ -70,7 +105,7 @@ include "navbar.php";
                 const data = await getproductInfo(element.id);
                 // ['stripe_price_id'=>'price_1NsJqTB0uesfVsSs85bB0UJq','id'=>1,'color'=>'red','size'=>'M','name'=>'Mixed Feelings']
                 stripeShoppingCart.push({ stripe_price_id: data.stripe_pice_id, id: data.ID, color: element.color, size: element.size, name: data.product_name });
-                createCartElement(data);
+                createCartElement(data, element.color, element.size);
             } catch (error) {
                 console.error('Error:', error);
             }

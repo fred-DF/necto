@@ -19,7 +19,7 @@ require_once __DIR__.'/AdminController.php';
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?php echo $_ENV['URL']; ?>/admin/style.css">
-    <link rel="stylesheet" href="<?php echo $_ENV['URL']; ?>/admin/dispatiching.css">
+    <link rel="stylesheet" href="<?php echo $_ENV['URL']; ?>/admin/products.css">
     <meta name="theme-color" content="#fcfcfc">
     <title>Necto Clothing - Dispatching</title>
 </head>
@@ -33,57 +33,34 @@ require_once __DIR__.'/AdminController.php';
         <img src="<?php echo $_ENV['URL']; ?>/admin/dispatching-tutorial.png" width="900px" style="transform: translateX(-21%); margin-top: 25px">
     </div>
 </div>
-<div class="order-wrapper">
-    <?php
-    $orders = AdminController::getOrdersToDispatch();
-
-    $loopNumber = 0;
-
-    foreach ($orders as $order) {
-        $loopNumber += 1;
-        echo '<div>
-            <div>
-                <div class="space-between">
-                    <h4>#'.$order['order_id'].'</h4>
-                    <span class="marked">'.$loopNumber.' / '.count($orders).'</span>
-                </div>
-                <div class="space-between">
-                    <div>
-                        <p>'.$order['costumer_name'].'</p>
-                        <p>'.$order['costumer_street'].',</p>
-                        <p>'.$order['costumer_plz'].' '.$order['costumer_city'].'</p>
-                        <p>'.$order['costumer_country'].'</p>
-                    </div>
-                    <div class="quick-links">
-                        <a href="">view on Stripe</a>
-                        <a href="">contact costumer</a>
-                    </div>
-                </div>
-            </div>
-            <div>';
-        $items = database::select('order_products', ['conditions' => [['order_id', $order['ID']]]]);
-        $items_loop = 0;
-        foreach ($items as $item) {
-            $items_loop += 1;
-            echo '<div class="space-between">
-                    <span><b>'.$item['product_name'].'</b></span>
-                    <span>'.$item['product_color'].' | '.$item['product_size'].'</span>
-                </div>';
-            if(count($items) !== $items_loop) {
-                echo '<hr>';
-            }
-        }
-
-        echo '</div></div>';
-    }
-    ?>
-
+<div class="widget-wrapper">
+    <a href="../admin" style="color: black; text-decoration: none">Home</a>
+    <h1>Products</h1>
+    <button onclick="window.location = '/admin/addProduct.php'">add new product</button>
     <div>
-        <div style="border-top-style: solid">
-            <h4>All done!</h4>
-            <p>Go back to homepage or bring packages to the post office now.</p>
-            <a href="."><button>go back to home</button></a>
-        </div>
+        <table class="products">
+        <?php
+        foreach (AdminController::getProducts() as $product) {
+//            var_dump($product);
+            ?>
+            <tr>
+                <td>
+                    <img src="<?php echo $product['product_pic_url'] ?>" alt="">
+                </td>
+                <td>
+                    <div>
+                        <p><?php echo $product['product_name'] ?></p>
+                        <div>
+                            <span><?php echo  $product['product_price'] ?> BGR</span>
+                            <span style="text-decoration: underline" onclick="window.location = 'editProduct.php?product_id=<?php echo $product['ID'] ?>'">more</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        <?php
+        }
+        ?>
+        </table>
     </div>
 </div>
 <script>
