@@ -4,3 +4,4 @@ node_modules
 app
 .env
 .idea
+src/product_images/

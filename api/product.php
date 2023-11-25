@@ -35,7 +35,19 @@ class product
             exit();
         }
 
-        $query = "INSERT INTO `products`(`product_name`, `product_price`, `product_sizes`, `product_colors`, `product_pic_url`, `stripe_price_id`) VALUES ('".$data['name']."','".$data['price']."','".addslashes(json_encode($sizes))."','".addslashes(json_encode($colors))."','".$_ENV['URL'].$path."','')";
+        $stripe = new \Stripe\StripeClient($_ENV['STRIPE_API_KEY']);
+
+        $price_object = $stripe->prices->create([
+            'unit_amount' => $data['price'] * 100,
+            'currency' => 'bgr',
+            'recurring' => ['interval' => 'month'],
+            'product_data' => [
+                'name' => 'Gold Special',
+                'images' => [$_ENV['URL'].$path],
+            ],
+        ]);
+
+        $query = "INSERT INTO `products`(`product_name`, `product_price`, `product_sizes`, `product_colors`, `product_pic_url`, `stripe_price_id`) VALUES ('".$data['name']."','".$data['price']."','".addslashes(json_encode($sizes))."','".addslashes(json_encode($colors))."','".$_ENV['URL'].$path."',$price_object->id])";
 
         $response = database::executeQuery($query);
 

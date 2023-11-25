@@ -74,7 +74,7 @@ if(isset($_GET['item'])) {
             const product = <?php echo $item['ID']; ?>;
             const size = form.get("size");
             const color = form.get("color");
-            if(localStorage.getItem("shopping-cart") == null || localStorage.getItem("shopping-cart") == "") {
+            if(localStorage.getItem("shopping-cart") == null || localStorage.getItem("shopping-cart") === "") {
                 localStorage.setItem("shopping-cart", "[]")
             }
             let shopping_cart = localStorage.getItem('shopping-cart');
