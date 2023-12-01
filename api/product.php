@@ -39,15 +39,13 @@ class product
 
         $price_object = $stripe->prices->create([
             'unit_amount' => $data['price'] * 100,
-            'currency' => 'bgr',
-            'recurring' => ['interval' => 'month'],
+            'currency' => 'bgn',
             'product_data' => [
-                'name' => 'Gold Special',
-                'images' => [$_ENV['URL'].$path],
+                'name' => $data['name'],
             ],
         ]);
 
-        $query = "INSERT INTO `products`(`product_name`, `product_price`, `product_sizes`, `product_colors`, `product_pic_url`, `stripe_price_id`) VALUES ('".$data['name']."','".$data['price']."','".addslashes(json_encode($sizes))."','".addslashes(json_encode($colors))."','".$_ENV['URL'].$path."',$price_object->id])";
+        $query = "INSERT INTO `products`(`product_name`, `product_price`, `product_sizes`, `product_colors`, `product_pic_url`, `stripe_price_id`) VALUES ('".$data['name']."','".$data['price']."','".addslashes(json_encode($sizes))."','".addslashes(json_encode($colors))."','".$_ENV['URL'].$path."','".$price_object->id."')";
 
         $response = database::executeQuery($query);
 

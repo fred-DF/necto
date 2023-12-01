@@ -3,7 +3,12 @@ require __DIR__.'/../bootstrap.php';
 
 Class AdminController {
     public static function getDayAmount () {
-        return database::executeQuery('SELECT SUM(`price_total`) AS amount FROM orders WHERE DATE(`created_at`) = CURDATE()');
+        $total = database::executeQuery('SELECT SUM(`price_total`) AS amount FROM orders WHERE DATE(`created_at`) = CURDATE()');
+        if(empty($total)) {
+            return '0';
+        } else {
+            return $total;
+        }
     }
 
     public static function countDispatches () {

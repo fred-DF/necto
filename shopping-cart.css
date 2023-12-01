@@ -1,21 +1,25 @@
 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+
 body {
     background-color: white !important;
-    color: black;
+    color: black !important;
     overflow-x: hidden;
-    width: 100vw;
+    width: calc(100% - 16px);
     font-family: sans-serif;
-    padding: 25px 0;
+    padding: 0 0;
+    padding-top: 125px;
 }
 
 #shopping-cart-page {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 30px;
 }
 
 #shopping-cart-page > div {
-    width: 20%;
+    /*width: 20%;*/
 }
 
 .shopping-cart-item-div {
@@ -23,7 +27,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center !important;
-    background-color: #e7e7e7;
+    background-color: #eaeaea;
     border-radius: 3px;
     flex-wrap: nowrap;
     position: relative;
@@ -39,58 +43,57 @@ body {
     aspect-ratio: 3/4;
 }
 
+button {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 5px;
+    font-size: 16px;
+    background-color: #635BFFFF;
+    color: white;
+    width: 100%;
+    border: none;
+    margin: 10px 0;
+    padding: 15px 0;
+    border-radius: 3px;
+}
+
 .shopping-cart-item-div > div {
     margin: 0 20px;
     z-index: 2;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 100%;
 }
 
-.div_r {
+.div_t {
     display: flex;
     flex-flow: column;
 }
 
-.div_r > p {
-    margin: 0;
-    color: white;
-    text-align: right;
-    text-transform: uppercase;
-    color: lightgray;
+.shopping-cart-item-div > div > div {
+    display: flex;
+    justify-content: space-between;
 }
 
-.shopping-cart-item-div > img.bg_img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: calc(100% + 10px);
-    height: calc(100% + 10px);
-    object-fit: cover;
-    -webkit-filter: blur(1px) brightness(0.7);
-    filter: blur(3px) brightness(0.7);
-    z-index: 1;
-    margin: -5px;
+div > p {
+    margin: 0;
 }
 
 p.product-name {
-    color: white !important;
+    color: #000000 !important;
     font-weight: normal !important;
 }
 
 p.product-name, p.product-price {
     margin: 0;
-    color: rgb(231, 231, 231);
+    color: rgb(94, 94, 94);
     font-weight: lighter;
 }
 
-button.large {
-    width: 100%;
-    padding: 15px 0;
-    background-color: #7caaff;
-    color: white;
-    border: none;
-    border-radius: 3px;
+.product-delete {
+    text-decoration: underline;
 }
 
 /* Ladespinner (Fremder Code) */
@@ -115,13 +118,83 @@ button.large {
     }
 }
 
-
 nav {
+    background-color: #ffffff02;
+    backdrop-filter: blur(25px) brightness(0.7);
+    -webkit-backdrop-filter: blur(25px) brightness(0.7);
+    width: calc(100% - calc(calc(100vw - 650px)));
+    padding: 15px calc(calc(100vw - 650px) / 2);
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    -webkit-backdrop-filter: blur(15px);
-    padding: 10px 60px;
-    position: static;
+    position: fixed;
     top: 0;
+    left: 0;
+    z-index: 999;
+    align-items: center;
+    color: white;
+}
+
+nav > i {
+    font-size: 18px;
+}
+
+footer {
+    background-color: white;
+    padding: 15px calc(calc(100vw - 650px) / 2);
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    align-items: end;
+    margin-top: 50px;
+}
+
+a {
+    color: black;
+    text-decoration-color: #7a7979;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+
+}
+
+#total_price {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 8px;
+    background-color: #ececec;
+    border-radius: 3px;
+    width: fit-content;
+}
+
+#price {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#total_price > div {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+
+@media only screen and (max-width: 800px) {
+    div#shopping-cart-page {
+        flex-direction: column;
+    }
+
+    nav {
+        padding: 15px;
+        width: calc(100% - 30px) !important;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: start !important;
+        gap: 40px;
+    }
+}
+
+.buttontext {
+    max-width: 350px;
 }

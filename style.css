@@ -1,14 +1,16 @@
 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+
 body {
     overflow-x: hidden;
     width: 100vw;
     min-height: 100vh;
     color: white;
     font-family: sans-serif;
-    padding: 25px 0;
     background: rgb(36,34,71);
     background: linear-gradient(54deg, rgb(22, 22, 42) 0%, rgb(15, 15, 42) 76%, rgb(18, 36, 40) 100%);
     background-color: white;
+    margin: 0;
 }
 
 h1 {
@@ -17,6 +19,7 @@ h1 {
 }
 
 div#item_list {
+    padding-top: 125px;
     z-index: 2;
     max-width: 650px;
     display: grid;
@@ -121,9 +124,11 @@ div.item > div > p {
 }
 
 div.item > div > button {
-    background-color: #7caaff;
+    background-color: #635BFFFF;
     color: white;
     width: 50%;
+    font-size: 14px;
+    padding: 5px 0;
     border-radius: 2px;
     border: none;
 }
@@ -133,7 +138,7 @@ div#bg > img {
     width: 750px;
     position: absolute;
     left: -750px;
-    top: 0%;
+    top: 0;
     transform: translateX(-100%);
     animation-name: cloud_movement;
     animation-timing-function: linear;
@@ -148,5 +153,63 @@ div#bg > img {
 
     100% {
         left: calc(100% + 750px);
+    }
+}
+
+nav {
+    background-color: #ffffff02;
+    backdrop-filter: blur(25px) brightness(0.7);
+    -webkit-backdrop-filter: blur(25px) brightness(0.7);
+    width: calc(100% - calc(calc(100vw - 650px)));
+    padding: 15px calc(calc(100vw - 650px) / 2);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    align-items: center;
+    color: white;
+}
+
+nav > i {
+    font-size: 18px;
+}
+
+footer {
+    background-color: white;
+    padding: 15px calc(calc(100vw - 650px) / 2);
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    align-items: end;
+    margin-top: 50px;
+    z-index: 9999;
+}
+
+a {
+    color: black;
+    text-decoration-color: #7a7a7a;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+
+}
+
+@media only screen and (max-width: 800px) {
+    div#item_list {
+        grid-template-columns: calc(80% - 50px);
+        justify-content: center;
+    }
+
+    nav {
+        padding: 15px;
+        width: calc(100% - 30px) !important;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: start !important;
+        gap: 40px;
+        padding: 15px 5px;
     }
 }

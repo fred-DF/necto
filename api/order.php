@@ -20,13 +20,14 @@ class Order
         } else {
             return false;
         }
+        return false;
     }
 
     public static function prepareOrder ($shopping_cart) {
         # $shopping_cart = [['stripe_price_id','id','color','size','name'],...]
         foreach ($shopping_cart as $product) {
             if(!self::checkAvailability($product['id'],$product['color'], $product['size'])) {
-                return json_encode(['error' => true]);
+                return json_encode(['error' => 1]);
             }
         }
         $stripe_products = [];

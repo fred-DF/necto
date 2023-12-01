@@ -1,11 +1,14 @@
 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+
 body {
     background-color: white !important;
     color: black;
     overflow-x: hidden;
     width: 100vw;
     font-family: sans-serif;
-    padding: 25px 0;
+    padding: 125px 5px 0 5px;
+    margin: 0;
 }
 
 
@@ -19,7 +22,7 @@ body {
 }
 
 #item_page > div {
-    min-width: 400px;;
+    min-width: 400px;
 }
 
 #item_page > img {
@@ -78,15 +81,67 @@ a.nav {
     height: 40px;
 }
 
+
+nav {
+    background-color: #ffffff02;
+    backdrop-filter: blur(25px) brightness(0.7);
+    -webkit-backdrop-filter: blur(25px) brightness(0.7);
+    width: calc(100% - calc(calc(100vw - 650px)));
+    padding: 15px calc(calc(100vw - 650px) / 2);
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    align-items: center;
+    color: white;
+}
+
+nav > i {
+    font-size: 18px;
+}
+
+footer {
+    background-color: white;
+    padding: 15px calc(calc(100vw - 650px) / 2);
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    align-items: end;
+    margin-top: 50px;
+}
+
+a {
+    color: black;
+    text-decoration-color: #808080;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+
+}
+
+
 @media only screen and (max-width: 800px) {
+
+    nav {
+        padding: 15px;
+        width: calc(100% - 30px) !important;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: start !important;
+        gap: 40px;
+    }
+
     #item_page {
         flex-direction: column;
-        width: calc(100vw - 15px);
+        width: calc(100vw - 10px);
     }
 
     #item_page > img {
         max-height: none;
-        width: 100%;
+        width: calc(100% - 10px);
     }
 
     #item_page > div {

@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_GET['token'])) {
-
-} else {
+//if(isset($_GET['token'])) {
+//
+//} else {
 //        header("HTTP/1.1 403");
 //        header("Location: login.html");
 //        exit();
@@ -149,7 +149,7 @@ require_once __DIR__.'/AdminController.php';
         xhr.open("POST", "/api/api.php", true);
         xhr.onload = () => {
             if(xhr.status === 200) {
-                window.location = "../admin";
+                // window.location = "../admin";
             } else {
                 alert("Fehler aufgetreten");
             }

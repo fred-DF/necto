@@ -21,13 +21,13 @@ if(isset($_GET['item'])) {
     <title><?php echo $item['product_name'] ?> | Necto Clothing</title>
 </head>
 <body>
+<nav>
+    <h1>Necto Clothing</h1>
+    <i class="bi bi-cart3" onclick="window.location = '/shopping-cart.php'"></i>
+</nav>
     <div id="item_page">
         <img src="<?php echo $item['product_pic_url']; ?>" alt="" id="productImg">
         <div>
-            <div style="display: flex; justify-content: space-between">
-                <a href="." class="nav">Home</a>
-                <a href="shopping-cart.php" class="nav" id="shoppingCartLink">Shopping Cart (0)</a>
-            </div>
             <h2><?php echo $item['product_name'] ?></h2>
             <form method="GET" id="itemForm">
             <h3>Color:</h3>
@@ -54,6 +54,24 @@ if(isset($_GET['item'])) {
             </form>
         </div>
     </div>
+<footer>
+    <div>
+        <h2>Necto Clothing</h2>
+        <p>📍 based in Varna, BG</p>
+        <div style="display: flex; flex-direction: column; gap: 5px">
+            <a href="/privacy"># Our privacy commitment</a>
+            <a href="/privacy"># Impressum</a>
+            <a href="/privacy"># EU-Help Center for online purchases</a>
+        </div>
+    </div>
+    <div>
+        <div style="display: flex; flex-direction: column; gap: 5px">
+            <a href="tel:+4915253036128">Tel: 015253036128</a>
+            <a href="mailto:contact@necto-clothing.com">Mail: contact@necto-clothing.com</a>
+            <span>Musterstraße 46,<br>48151 Varna</span>
+        </div>
+    </div>
+</footer>
     <script>
         function loadImg (color) {
             <?php
@@ -126,5 +144,28 @@ if(isset($_GET['item'])) {
         }
     </script>
     <script src="main.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyB1YqjsNt6Mv4ovqRTIUPIXancEUfZozeg",
+            authDomain: "necto-dfceb.firebaseapp.com",
+            projectId: "necto-dfceb",
+            storageBucket: "necto-dfceb.appspot.com",
+            messagingSenderId: "386154409103",
+            appId: "1:386154409103:web:f275c32536f7076c32d4fa",
+            measurementId: "G-BE06XZHY0M"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 </body>
 </html>
