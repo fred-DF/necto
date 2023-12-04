@@ -26,20 +26,16 @@ switch ($route) {
 
     case 'checkout':
         include 'order.php';
-//            $data = Order::prepareOrder([
-//                ['stripe_price_id'=>'price_1NsJqTB0uesfVsSs85bB0UJq','id'=>1,'color'=>'red','size'=>'M','name'=>'Mixed Feelings'],
-//                ['stripe_price_id'=>'price_1NsJqTB0uesfVsSs85bB0UJq','id'=>1,'color'=>'red','size'=>'M','name'=>'Mixed Feelings']
-//            ]);
         $data = Order::prepareOrder(json_decode($_GET['shopping-cart'], true));
         $data = json_decode($data);
         var_dump($data);
         if($data->error) {
             header("HTTP/1.1 301");
-            header("Location: /shopping-cart.php?productSoldOut");
+//            header("Location: /shopping-cart.php?productSoldOut");
             exit();
         }
         header("HTTP/1.1 301");
-        header("Location: ".$data->redirect_url);
+//        header("Location: ".$data->redirect_url);
         break;
 
     case 'updateStock':

@@ -6,7 +6,7 @@
 //        header("HTTP/1.1 403");
 //        header("Location: login.html");
 //        exit();
-}
+//}
 require_once __DIR__.'/../bootstrap.php';
 require_once __DIR__.'/AdminController.php';
 

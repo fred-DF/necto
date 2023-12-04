@@ -7,7 +7,7 @@ require_once 'mail.php';
 class Order
 {
 
-    private static function checkAvailability ($id, $color, $size) {
+    private static function checkAvailability ($id, $color, $size) :bool {
         $res = database::select('product_variants', ['conditions' => [['product_ID', $id],['product_color', $color],['product_size', $size]]]);
         if(!empty($res)) {
             if(count($res) === 1) {
@@ -25,9 +25,10 @@ class Order
 
     public static function prepareOrder ($shopping_cart) {
         # $shopping_cart = [['stripe_price_id','id','color','size','name'],...]
+        var_dump($shopping_cart);
         foreach ($shopping_cart as $product) {
             if(!self::checkAvailability($product['id'],$product['color'], $product['size'])) {
-                return json_encode(['error' => 1]);
+                return false;
             }
         }
         $stripe_products = [];
